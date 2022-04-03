@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
- deleteTodo,
- toggleTodo,
- setVisibilityFilter
-} from "../actions/actionCreator";
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "../actions/actionsTypes";
+import { deleteTodo, toggleTodo, setVisibilityFilter} from "../Action/actionCreator";
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "../Action/actionType";
 import { bindActionCreators } from "redux";
 class Table extends Component {
  render() {
@@ -14,21 +10,21 @@ class Table extends Component {
  <nav style={{ marginTop: "60px" }}>
  <ol className="breadcrumb">
  <li
- className={"breadcrumb-item "+ (this.props.visibilityFilter === SHOW_ALL ? 
+ className={"breadcrumb-item "+ (this.props.visibilityFilter === SHOW_ALL ?
 'active' : '') }
  onClick={() => this.props.setVisibilityFilter(SHOW_ALL)}
  >
  All
  </li>
  <li
- className={"breadcrumb-item "+ (this.props.visibilityFilter === 
+ className={"breadcrumb-item "+ (this.props.visibilityFilter ===
 SHOW_COMPLETED ? 'active' : '') }
  onClick={() => this.props.setVisibilityFilter(SHOW_COMPLETED)}
  >
  Completed
  </li>
  <li
- className={"breadcrumb-item "+ (this.props.visibilityFilter === SHOW_ACTIVE ? 
+ className={"breadcrumb-item "+ (this.props.visibilityFilter === SHOW_ACTIVE ?
 'active' : '') }
  onClick={() => this.props.setVisibilityFilter(SHOW_ACTIVE)}
  >
@@ -49,8 +45,7 @@ SHOW_COMPLETED ? 'active' : '') }
  </thead>
  <tbody>
  {this.props.todos.map(todo => (
- <tr key={todo.id}>
- <td
+ <tr key={todo.id}><td
  style={{
  textDecoration: todo.completed ? "line-through" : "none"
  }}
